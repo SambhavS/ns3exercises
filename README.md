@@ -1,2 +1,1 @@
-# ns3exercises
-# ns3exercises
+Getting started with ns3
