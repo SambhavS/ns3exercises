@@ -14,19 +14,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-/* Warmup Exercise 1 Summary:
- * I modified the 'myfirst.cc' file, which already set up two nodes with
- * a Point2Point connection. I added an additional server and client
- * on the same nodes, with new server/client helpers. To ensure that 
- * the clients sent the packets to the correct server, I configured the
- * servers to use different port numbers and configured each client to
- * send packets to the correct port.
- * Run this file from the ns-3.29 directory with `./waf --run scratch/warmup1`
- *
- * Towards the bottom of the file, I added the standard lines to create ascii
- * and pcap traces. Read the pcap files with `tcpdump -nn -tt -r warmup1-1-1.pcap`
- */
-
 #include "ns3/core-module.h"
 #include "ns3/network-module.h"
 #include "ns3/internet-module.h"
@@ -54,6 +41,8 @@ main (int argc, char *argv[])
   PointToPointHelper pointToPoint;
   pointToPoint.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
   pointToPoint.SetChannelAttribute ("Delay", StringValue ("0ms"));
+
+  
 
   NetDeviceContainer devices;
   devices = pointToPoint.Install (nodes);
@@ -89,11 +78,6 @@ main (int argc, char *argv[])
   clientApp1.Stop (Seconds (4.0));
   clientApp2.Start (Seconds (6.0));
   clientApp2.Stop (Seconds (8.0));
-
-  // Ascii & Pcap Trace Setup
-  AsciiTraceHelper ascii;
-  pointToPoint.EnableAsciiAll (ascii.CreateFileStream ("warmup1.tr"));
-  pointToPoint.EnablePcapAll ("warmup1");
 
   Simulator::Run ();
   Simulator::Destroy ();
