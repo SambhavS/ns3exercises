@@ -1,0 +1,6 @@
+Q: How does exercise 1 work?
+Q: How does exercise 2 work?
+---
+- What is masking?
+- Why is it common to have a space between parenthesis and functions)
+- How to interpret data in XML file
